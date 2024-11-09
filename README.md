@@ -18,7 +18,7 @@ The goal of this exercise was to improve the original bank account withdrawal co
 ## Elaboration on Implementation Choices
 
 ### 1. **Single Responsibility Principle (SRP)**
-The original `withdraw` method in the `BankAccountService` class was performing multiple responsibilities, including checking the account balance, updating the balance, and publishing an SNS notification. I broke this method into three distinct responsibilities:
+The original `withdraw` method was performing multiple responsibilities, including checking the account balance, updating the balance, and publishing an SNS notification. I broke this method into three distinct responsibilities in the `BankAccountService`:
 - **Check Balance**: Ensures the account has sufficient funds for withdrawal.
 - **Update Balance**: Updates the account balance while ensuring no other user has modified the account (using optimistic locking).
 - **Publish Notification**: Publishes an event using the `NotificationService` interface.
